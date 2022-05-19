@@ -32,6 +32,15 @@ def main():
 
         for row in values:
             print(row)
+
+        update_list = [['32437', 'ENTRY', '2022-05-17 4:01:48', 'V', 'B', '2022-05-17', '0', '1', '0', '0', '0', '0'],
+                        ['32436', 'ENTRY', '2022-05-16 21:18:05', 'V', 'A', '2022-05-16', '1', '0', '0', '0', '0', '0']
+                    ]
+
+        request = service.spreadsheets().values().append(spreadsheetId=SPREADSHEET_ID, range="test!A2", valueInputOption="USER_ENTERED", body={"values":update_list})
+        response = request.execute()
+        print(response)
+
     except HttpError as err:
         print(err)
 
